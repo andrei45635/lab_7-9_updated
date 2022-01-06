@@ -13,7 +13,7 @@ def insertion_sort(lista, key=lambda x: x, reverse=False, cmp=lambda a, b, r: a 
     :return:lista sortata
     """
     ok = True
-    for i in range(0, len(lista)-1):
+    for i in range(1, len(lista)):
         if reverse is False:
             ind = i - 1
             while ind >= 0 and cmp(key(lista[i]),key(lista[ind]),False):
@@ -59,3 +59,12 @@ def comb_sort(lista, key=lambda x: x, reverse=False, cmp=lambda a, b, r: a > b i
                     swaps = True
     if swaps is True:
         return lista
+
+
+def mycmp(x,y):
+    if x > y:
+        return 1
+    elif x < y:
+        return -1
+    elif x == y:
+        return 0

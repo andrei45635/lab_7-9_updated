@@ -3,7 +3,7 @@ import string
 
 from domain.entitati import Carte, Client, IncRet
 from domain.dtos import IncRetDTO, IncRetDTOs, RetIncDTOs, IncRetDTO3
-from sortari.sorting import insertion_sort, comb_sort
+from sortari.sorting import insertion_sort, comb_sort, mycmp
 import functools
 
 
@@ -78,25 +78,55 @@ class ServiceCarte(object):
     def stergere_carti_recursiv(self, user_input, i):
        return self.__repo_carti.sterge_carte_recursiv(user_input, i)
 
-    def sortare_carti_insertion(self):
+    def sortare_carti_insertion(self, user_input):
         """
         metoda care sorteaza cartile utilizand Insertion Sort
         :return:
         """
         allcl = self.__repo_carti.get_all_carti()
         insertion_sort(allcl, key=lambda _carte: _carte.get_id_carte(), reverse=False, cmp=lambda a, b, r=False: a < b if r is False else a > b)
-        for _carte in allcl:
-            print(_carte.get_id_carte())
+        if user_input == "id":
+            for _carte in allcl:
+                print(_carte.get_id_carte())
+        elif user_input == "desc":
+            for _carte in allcl:
+                print(_carte.get_desc())
+        elif user_input == "autor":
+            for _carte in allcl:
+                print(_carte.get_autor())
+        elif user_input == "titlu":
+            for _carte in allcl:
+                print(_carte.get_titlu())
+        elif user_input == "all":
+            for _carte in allcl:
+                print(_carte)
 
-    def sortare_carti_comb(self):
+    def sortare_carti_comb(self, user_input):
         """
         metoda care sorteaza cartile utilizand Comb Sort
         :return:
         """
         allcl = self.__repo_carti.get_all_carti()
         comb_sort(allcl, key=lambda _carte: _carte.get_id_carte(), reverse=True, cmp=lambda a, b, r=False: a < b if r is False else a > b)
-        for _carte in allcl:
-            print(_carte.get_id_carte())
+        if user_input == "id":
+            for _carte in allcl:
+                print(_carte.get_id_carte())
+        elif user_input == "desc":
+            for _carte in allcl:
+                print(_carte.get_desc())
+        elif user_input == "autor":
+            for _carte in allcl:
+                print(_carte.get_autor())
+        elif user_input == "titlu":
+            for _carte in allcl:
+                print(_carte.get_titlu())
+        elif user_input == "all":
+            for _carte in allcl:
+                print(_carte)
+
+    def sortare_comb_alt(self):
+        allcl = self.__repo_carti.get_all_carti()
+        comb_sort(allcl, key=functools.cmp_to_key(mycmp(x,y)), reverse=False)
 
 
 class ServiceClient(object):

@@ -262,10 +262,12 @@ class Consola(object):
         self.__srv_inc_ret.add_inc_ret_recursiv_service(id_inc_ret, id_carte, id_client, durata, 0)
 
     def __ui_sorting_carti_insertion(self):
-        self.__srv_carte.sortare_carti_insertion()
+        user_input = input("Introduceti cheia dupa care doriti sa cautati: ")
+        self.__srv_carte.sortare_carti_insertion(user_input)
 
     def __ui_sortare_carti_comb(self):
-        self.__srv_carte.sortare_carti_comb()
+        user_input = input("Introduceti cheia dupa care doriti sa cautati: ")
+        self.__srv_carte.sortare_carti_comb(user_input)
 
     def __ui_sterge_carte_recursiv(self):
         try:
