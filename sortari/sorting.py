@@ -1,4 +1,4 @@
-def insertion_sort(lista, key=lambda x: x, reverse=False, cmp=lambda a, b, r: a > b if r == False else a < b):
+def insertion_sort(lista, key=lambda x: x, reverse=False, *, cmp=lambda a, b, r: a > b if r == False else a < b):
     """
     functie care sorteaza o lista utilizand metoda Insertion Sort discutata la curs
     se parcurg elementele
@@ -32,7 +32,7 @@ def insertion_sort(lista, key=lambda x: x, reverse=False, cmp=lambda a, b, r: a 
         return lista
 
 
-def comb_sort(lista, key=lambda x: x, reverse=False, cmp=lambda a, b, r: a > b if r == False else a < b):
+def comb_sort(lista, key=lambda x: x, reverse=False, *, cmp=lambda a, b, r: a > b if r == False else a < b):
     """
     metoda care sorteaza o lista utilizand metoda Comb Sort
     comb sort este o varianta a bubble sort, doar ca in loc ca gap-ul sa fie 1, acesta este 1.3
