@@ -124,9 +124,26 @@ class ServiceCarte(object):
             for _carte in allcl:
                 print(_carte)
 
-    def sortare_comb_alt(self):
+    def cmp_alt(self):
         allcl = self.__repo_carti.get_all_carti()
-        comb_sort(allcl, key=functools.cmp_to_key(mycmp(x,y)), reverse=False)
+        for index, _carte in enumerate(allcl):
+            if _carte.get_id_carte()[index] < _carte.get_id_carte()[index+1]:
+                return 1
+
+    def sortare_comb_alt(self):
+        def cmp_alt():
+            allcl = self.__repo_carti.get_all_carti()
+            for index, _carte in enumerate(allcl):
+                if _carte.get_id_carte()[index] < _carte.get_id_carte()[index + 1]:
+                    return 1
+                elif _carte.get_id_carte()[index] > _carte.get_id_carte()[index + 1]:
+                    return -1
+                else:
+                    return 0
+        allcl = self.__repo_carti.get_all_carti()
+        comb_sort(allcl, key=functools.cmp_to_key(cmp_alt), reverse=False)
+        for _carte in allcl:
+            print(_carte)
 
 
 class ServiceClient(object):

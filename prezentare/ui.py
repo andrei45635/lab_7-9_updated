@@ -277,6 +277,9 @@ class Consola(object):
             return
         self.__srv_carte.stergere_carti_recursiv(user_input, 0)
 
+    def __ui_alt_sort(self):
+        self.__srv_carte.sortare_comb_alt()
+
     def __ui_afiseaza_meniu(self):
         print("--------------------------- APLICATIE PENTRU BIBLIOTECA ---------------------------\n")
         print("1. add_carte = adauga carte in lista")
@@ -368,5 +371,7 @@ class Consola(object):
                 self.__ui_sorting_carti_insertion()
             elif cmd == 25:
                 self.__ui_sortare_carti_comb()
+            elif cmd == 26:
+                self.__ui_alt_sort()
             else:
                 print("comanda invalida!")
